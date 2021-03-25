@@ -1,0 +1,32 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: hello
+  namespace: nero
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-nero-hello
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: 2019-01-08T10:18:34Z
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-myapps-baseapi
+    spec:
+      containers:
+        - args:
+            - java
+            - -jar
+            - hello-0.0.1-SNAPSHOT.jar
+          image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+          imagePullPolicy: Always

@@ -9,7 +9,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: scc/hyperloop-baseapi:${CICD_EXECUTION_SEQUENCE}
+      tag: nero/hyperloop-baseapi:${CICD_EXECUTION_SEQUENCE}
       registry: registry.cn-hangzhou.aliyuncs.com
 - name: deploy
   steps:
