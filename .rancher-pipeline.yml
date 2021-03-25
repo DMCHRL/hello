@@ -10,10 +10,10 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: scc/hyperloop-baseapi:${CICD_EXECUTION_SEQUENCE}
-      pushRemote: true
       registry: registry.cn-hangzhou.aliyuncs.com
 - name: deploy
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
 timeout: 60
+notification: {}
