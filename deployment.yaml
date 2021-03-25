@@ -24,6 +24,7 @@ spec:
         workload.user.cattle.io/workloadselector: deployment-myapps-baseapi
     spec:
       containers:
+        - name: hello 
         - args:
             - java
             - -jar
