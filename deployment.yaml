@@ -21,3 +21,5 @@ spec:
           image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
           imagePullPolicy: Always
           name: hello-admin
+          imagePullSecrets:
+            - name: pipeline-docker-registry
