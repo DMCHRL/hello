@@ -1,12 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello
-  namespace: test
+  name: hello-deployment
+  namespace: p-ss9zr-pipeline
 spec:
-  progressDeadlineSeconds: 600
   replicas: 1
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: hello-admin
@@ -16,10 +14,10 @@ spec:
         app: hello-admin
     spec:
       containers:
-        - name: hello 
         - args:
             - java
             - -jar
             - hello-0.0.1-SNAPSHOT.jar
           image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
           imagePullPolicy: Always
+          name: hello-admin
