@@ -22,4 +22,7 @@ spec:
             - hello-0.0.1-SNAPSHOT.jar
           image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
           imagePullPolicy: Always
+          ports:
+            - containerPort: 8585     
+              hostPort: 8585
           name: hello-admin
